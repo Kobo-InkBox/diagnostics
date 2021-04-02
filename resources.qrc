@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>eink.qss</file>
+        <file>resources/checkbox-checked.png</file>
+        <file>resources/checkbox-unchecked.png</file>
+        <file>resources/usbms_white.png</file>
+        <file>resources/usbms.png</file>
+    </qresource>
+</RCC>
