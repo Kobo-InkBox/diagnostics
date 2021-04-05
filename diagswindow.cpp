@@ -37,6 +37,7 @@ diagsWindow::diagsWindow(QWidget *parent)
         ui->checkBox_3->hide();
         ui->label_4->hide();
         ui->shellBtn->hide();
+        ui->softwareOptionsBtn->hide();
     }
 
     // Stylesheet

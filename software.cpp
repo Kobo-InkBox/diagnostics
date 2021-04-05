@@ -26,16 +26,6 @@ software::software(QWidget *parent) :
     stylesheetFile.open(QFile::ReadOnly);
     this->setStyleSheet(stylesheetFile.readAll());
     stylesheetFile.close();
-
-    // Check if the device is rooted
-    if(checkconfig("/opt/root/rooted") == true) {
-        ui->upgradeKernelBtn->show();
-        ui->label_3->show();
-    }
-    else {
-        ui->upgradeKernelBtn->hide();
-        ui->label_3->hide();
-    }
 }
 
 software::~software()
