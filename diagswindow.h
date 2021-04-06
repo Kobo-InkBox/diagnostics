@@ -82,6 +82,8 @@ private slots:
 
     void on_shellBtn_clicked();
 
+    void on_checkBox_4_toggled(bool checked);
+
 private:
     Ui::diagsWindow *ui;
     resetMenu *resetWindow;

@@ -31,11 +31,16 @@ diagsWindow::diagsWindow(QWidget *parent)
         if(checkconfig("/boot/flags/USBNET_ENABLE") == true) {
             ui->checkBox_3->click();
         }
+        if(checkconfig("/boot/flags/ALLOW_DOWNGRADE") == true) {
+            ui->checkBox_4->click();
+        }
     }
     else {
         rooted = false;
-        ui->checkBox_3->hide();
+        ui->checkBox_3->hide(); // USBNet checkbox
+        ui->checkBox_4->hide(); // Downgrade checkbox
         ui->label_4->hide();
+        ui->label_5->hide();
         ui->shellBtn->hide();
         ui->softwareOptionsBtn->hide();
     }
@@ -127,4 +132,14 @@ void diagsWindow::on_shellBtn_clicked()
     proc->start(prog, args);
     proc->waitForFinished();
     QMessageBox::information(this, tr("Kernel version"), tr("USBNet is set up and a telnet server was started.\nIP: 192.168.2.2"));
+}
+
+void diagsWindow::on_checkBox_4_toggled(bool checked)
+{
+    if(checked == true) {
+        string_writeconfig("/boot/flags/ALLOW_DOWNGRADE", "true");
+    }
+    else {
+        string_writeconfig("/boot/flags/ALLOW_DOWNGRADE", "false");
+    }
 }
