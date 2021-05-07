@@ -143,3 +143,13 @@ void diagsWindow::on_checkBox_4_toggled(bool checked)
         string_writeconfig("/boot/flags/ALLOW_DOWNGRADE", "false");
     }
 }
+
+void diagsWindow::on_checkBox_5_toggled(bool checked)
+{
+    if(checked == true) {
+        string_writeconfig("/boot/flags/X11_START", "true");
+    }
+    else {
+        string_writeconfig("/boot/flags/X11_START", "false");
+    }
+}
