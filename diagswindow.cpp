@@ -24,6 +24,9 @@ diagsWindow::diagsWindow(QWidget *parent)
     if(checkconfig("/boot/flags/FIRST_BOOT") == true) {
         ui->checkBox_2->click();
     }
+    if(checkconfig("/boot/flags/X11_START") == true) {
+        ui->checkBox_5->click();
+    }
 
     // Check if device is rooted
     if(checkconfig("/opt/root/rooted") == true) {
