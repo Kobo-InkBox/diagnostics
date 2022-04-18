@@ -17,22 +17,30 @@ resetMenu::resetMenu(QWidget *parent) :
     ui(new Ui::reset)
 {
     ui->setupUi(this);
-
-    ui->hardResetBtn->setStyleSheet("font-size: 10pt; padding: 15px");
-    ui->resetConfigBtn->setProperty("type", "borderless");
-    ui->hardResetBtn->setProperty("type", "borderless");
-    ui->resetConfigBtn->setStyleSheet("font-size: 10pt; padding: 15px");
-    ui->backBtn->setStyleSheet("font-size: 10pt; padding: 25px");
-    ui->hardResetRootBtn->setStyleSheet("font-size: 10pt; padding: 15px");
-    ui->hardResetRootBtn->setProperty("type", "borderless");
-    ui->softResetBtn->setStyleSheet("font-size: 10pt; padding: 15px");
-    ui->softResetBtn->setProperty("type", "borderless");
+    ui->backBtn->setFont(QFont("Inter"));
+    ui->resetConfigBtn->setFont(QFont("Inter"));
+    ui->hardResetBtn->setFont(QFont("Inter"));
+    ui->hardResetRootBtn->setFont(QFont("Inter"));
+    ui->softResetBtn->setFont(QFont("Inter"));
 
     // Stylesheet
     QFile stylesheetFile(":/eink.qss");
     stylesheetFile.open(QFile::ReadOnly);
     this->setStyleSheet(stylesheetFile.readAll());
     stylesheetFile.close();
+
+    ui->hardResetBtn->setStyleSheet("font-size: 10pt; padding: 15px; font-weight: bold");
+    ui->resetConfigBtn->setProperty("type", "borderless");
+    ui->hardResetBtn->setProperty("type", "borderless");
+    ui->resetConfigBtn->setStyleSheet("font-size: 10pt; padding: 15px; font-weight: bold");
+    ui->backBtn->setStyleSheet("font-size: 10pt; padding: 25px; font-weight: bold");
+    ui->hardResetRootBtn->setStyleSheet("font-size: 10pt; padding: 15px; font-weight: bold");
+    ui->hardResetRootBtn->setProperty("type", "borderless");
+    ui->softResetBtn->setStyleSheet("font-size: 10pt; padding: 15px; font-weight: bold");
+    ui->softResetBtn->setProperty("type", "borderless");
+
+    ui->label->setFont(QFont("Inter"));
+    ui->label->setStyleSheet("font-weight: bold");
 }
 
 resetMenu::~resetMenu()

@@ -87,7 +87,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Preparing USBMS session...</string>
+        <string>Preparing USBMS session ...</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>

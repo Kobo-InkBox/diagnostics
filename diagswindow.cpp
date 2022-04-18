@@ -27,6 +27,12 @@ diagsWindow::diagsWindow(QWidget *parent)
     if(checkconfig("/boot/flags/X11_START") == true) {
         ui->checkBox_5->click();
     }
+    if(checkconfig("/boot/flags/DISPLAY_DEBUG") == true) {
+        ui->displayDebugCheckBox->click();
+    }
+    if(checkconfig("/boot/flags/GUI_DEBUG") == true) {
+        ui->guiDebugCheckBox->click();
+    }
 
     // Check if device is rooted
     if(checkconfig("/opt/root/rooted") == true) {
@@ -93,7 +99,7 @@ void diagsWindow::on_powerOptionsBtn_clicked()
 void diagsWindow::on_getKernelBtn_clicked()
 {
     get_kernel_version();
-    QMessageBox::information(this, tr("Kernel version"), kernel_file_str);
+    QMessageBox::information(this, "Kernel version", "<font face='Noto Mono'>" + kernel_file_str + "</font>");
 }
 
 void diagsWindow::on_checkBox_toggled(bool checked)
@@ -134,7 +140,18 @@ void diagsWindow::on_shellBtn_clicked()
     QProcess *proc = new QProcess();
     proc->start(prog, args);
     proc->waitForFinished();
-    QMessageBox::information(this, tr("Kernel version"), tr("USBNet is set up and a telnet server was started.\nIP: 192.168.2.2"));
+    if(QFile::exists("/boot/flags/USBNET_IP")) {
+        QString ip = readFile("/boot/flags/USBNET_IP");
+        if(!ip.isEmpty()) {
+            QMessageBox::information(this, "USBNet Info", "USBNet has been set up and a telnet server was started.\nIP: " + ip);
+        }
+        else {
+            QMessageBox::information(this, "USBNet Info", "USBNet has been set up and a telnet server was started.\nIP: 192.168.2.2");
+        }
+    }
+    else {
+        QMessageBox::information(this, "USBNet Info", "USBNet has been set up and a telnet server was started.\nIP: 192.168.2.2");
+    }
 }
 
 void diagsWindow::on_checkBox_4_toggled(bool checked)
@@ -154,5 +171,39 @@ void diagsWindow::on_checkBox_5_toggled(bool checked)
     }
     else {
         string_writeconfig("/boot/flags/X11_START", "false");
+    }
+}
+
+QString diagsWindow::readFile(QString file) {
+    if(QFile::exists(file)) {
+        QFile fileToRead(file);
+        fileToRead.open(QIODevice::ReadOnly);
+        QTextStream in (&fileToRead);
+        QString content = in.readAll();
+        return content;
+    }
+    else {
+        return NULL;
+    }
+}
+
+void diagsWindow::on_displayDebugCheckBox_toggled(bool checked)
+{
+    if(checked == true) {
+        string_writeconfig("/boot/flags/DISPLAY_DEBUG", "true");
+    }
+    else {
+        string_writeconfig("/boot/flags/DISPLAY_DEBUG", "false");
+    }
+}
+
+
+void diagsWindow::on_guiDebugCheckBox_toggled(bool checked)
+{
+    if(checked == true) {
+        string_writeconfig("/boot/flags/GUI_DEBUG", "true");
+    }
+    else {
+        string_writeconfig("/boot/flags/GUI_DEBUG", "false");
     }
 }

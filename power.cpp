@@ -9,6 +9,7 @@ power::power(QWidget *parent) :
     ui(new Ui::power)
 {
     ui->setupUi(this);
+    ui->backBtn->setFont(QFont("Inter"));
 
     // Stylesheet
     QFile stylesheetFile(":/eink.qss");
@@ -16,7 +17,10 @@ power::power(QWidget *parent) :
     this->setStyleSheet(stylesheetFile.readAll());
     stylesheetFile.close();
 
-    ui->backBtn->setStyleSheet("font-size: 10pt; padding: 25px");
+    ui->label->setFont(QFont("Inter"));
+    ui->label->setStyleSheet("font-weight: bold");
+
+    ui->backBtn->setStyleSheet("font-size: 10pt; padding: 25px; font-weight: bold");
     ui->rebootBtn->setStyleSheet("font-size: 10pt; padding: 25px");
     ui->poweroffBtn->setStyleSheet("font-size: 10pt; padding: 25px");
 }

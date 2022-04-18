@@ -62,6 +62,7 @@ public:
         fhandler << config_option;
         fhandler.close();
     }
+    QString readFile(QString file);
 
 private slots:
     void on_getBattLevelBtn_clicked();
@@ -85,6 +86,10 @@ private slots:
     void on_checkBox_4_toggled(bool checked);
 
     void on_checkBox_5_toggled(bool checked);
+
+    void on_displayDebugCheckBox_toggled(bool checked);
+
+    void on_guiDebugCheckBox_toggled(bool checked);
 
 private:
     Ui::diagsWindow *ui;

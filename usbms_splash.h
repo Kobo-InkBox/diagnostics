@@ -16,10 +16,12 @@ class usbms_splash : public QWidget
 public:
     explicit usbms_splash(QWidget *parent = nullptr);
     ~usbms_splash();
-    void usbms_setup();
 
 private:
     Ui::usbms_splash *ui;
+
+private slots:
+    void usbms_setup();
 };
 
 #endif // USBMS_SPLASH_H

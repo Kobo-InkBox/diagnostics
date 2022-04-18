@@ -14,18 +14,24 @@ software::software(QWidget *parent) :
     ui(new Ui::software)
 {
     ui->setupUi(this);
-
-    ui->backBtn->setStyleSheet("font-size: 10pt; padding: 25px");
-    ui->pushButton->setStyleSheet("font-size: 10pt; padding: 15px");
-    ui->pushButton->setProperty("type", "borderless");
-    ui->upgradeKernelBtn->setStyleSheet("font-size: 10pt; padding: 15px");
-    ui->upgradeKernelBtn->setProperty("type", "borderless");
+    ui->backBtn->setFont(QFont("Inter"));
+    ui->pushButton->setFont(QFont("Inter"));
+    ui->upgradeKernelBtn->setFont(QFont("Inter"));
 
     // General stylesheet
     QFile stylesheetFile(":/eink.qss");
     stylesheetFile.open(QFile::ReadOnly);
     this->setStyleSheet(stylesheetFile.readAll());
     stylesheetFile.close();
+
+    ui->backBtn->setStyleSheet("font-size: 10pt; padding: 25px; font-weight: bold");
+    ui->pushButton->setStyleSheet("font-size: 10pt; padding: 15px; font-weight: bold");
+    ui->pushButton->setProperty("type", "borderless");
+    ui->upgradeKernelBtn->setStyleSheet("font-size: 10pt; padding: 15px; font-weight: bold");
+    ui->upgradeKernelBtn->setProperty("type", "borderless");
+
+    ui->label->setFont(QFont("Inter"));
+    ui->label->setStyleSheet("font-weight: bold");
 }
 
 software::~software()
