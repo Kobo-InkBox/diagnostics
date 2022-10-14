@@ -66,30 +66,19 @@ public:
 
 private slots:
     void on_getBattLevelBtn_clicked();
-
     void on_resetOptionsBtn_clicked();
-
     void on_softwareOptionsBtn_clicked();
-
     void on_powerOptionsBtn_clicked();
-
     void on_getKernelBtn_clicked();
-
     void on_checkBox_toggled(bool checked);
-
     void on_checkBox_2_toggled(bool checked);
-
     void on_checkBox_3_toggled(bool checked);
-
     void on_shellBtn_clicked();
-
     void on_checkBox_4_toggled(bool checked);
-
     void on_checkBox_5_toggled(bool checked);
-
     void on_displayDebugCheckBox_toggled(bool checked);
-
     void on_guiDebugCheckBox_toggled(bool checked);
+    void on_ipdDebugCheckBox_toggled(bool checked);
 
 private:
     Ui::diagsWindow *ui;

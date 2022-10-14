@@ -33,6 +33,9 @@ diagsWindow::diagsWindow(QWidget *parent)
     if(checkconfig("/boot/flags/GUI_DEBUG") == true) {
         ui->guiDebugCheckBox->click();
     }
+    if(checkconfig("/boot/flags/IPD_DEBUG") == true) {
+        ui->ipdDebugCheckBox->click();
+    }
 
     // Check if device is rooted
     if(checkconfig("/opt/root/rooted") == true) {
@@ -47,11 +50,17 @@ diagsWindow::diagsWindow(QWidget *parent)
     else {
         rooted = false;
         ui->checkBox_3->hide(); // USBNet checkbox
+        ui->checkBox_3->deleteLater();
         ui->checkBox_4->hide(); // Downgrade checkbox
+        ui->checkBox_4->deleteLater();
         ui->label_4->hide();
+        ui->label_4->deleteLater();
         ui->label_5->hide();
+        ui->label_5->deleteLater();
         ui->shellBtn->hide();
+        ui->shellBtn->deleteLater();
         ui->softwareOptionsBtn->hide();
+        ui->softwareOptionsBtn->deleteLater();
     }
 
     // Stylesheet
@@ -105,30 +114,30 @@ void diagsWindow::on_getKernelBtn_clicked()
 void diagsWindow::on_checkBox_toggled(bool checked)
 {
     if(checked == true) {
-        string_writeconfig("/boot/flags/DIAGS_BOOT", "true");
+        string_writeconfig("/boot/flags/DIAGS_BOOT", "true\n");
     }
     else {
-        string_writeconfig("/boot/flags/DIAGS_BOOT", "false");
+        string_writeconfig("/boot/flags/DIAGS_BOOT", "false\n");
     }
 }
 
 void diagsWindow::on_checkBox_2_toggled(bool checked)
 {
     if(checked == true) {
-        string_writeconfig("/boot/flags/FIRST_BOOT", "true");
+        string_writeconfig("/boot/flags/FIRST_BOOT", "true\n");
     }
     else {
-        string_writeconfig("/boot/flags/FIRST_BOOT", "false");
+        string_writeconfig("/boot/flags/FIRST_BOOT", "false\n");
     }
 }
 
 void diagsWindow::on_checkBox_3_toggled(bool checked)
 {
     if(checked == true) {
-        string_writeconfig("/boot/flags/USBNET_ENABLE", "true");
+        string_writeconfig("/boot/flags/USBNET_ENABLE", "true\n");
     }
     else {
-        string_writeconfig("/boot/flags/USBNET_ENABLE", "false");
+        string_writeconfig("/boot/flags/USBNET_ENABLE", "false\n");
     }
 }
 
@@ -157,20 +166,20 @@ void diagsWindow::on_shellBtn_clicked()
 void diagsWindow::on_checkBox_4_toggled(bool checked)
 {
     if(checked == true) {
-        string_writeconfig("/boot/flags/ALLOW_DOWNGRADE", "true");
+        string_writeconfig("/boot/flags/ALLOW_DOWNGRADE", "true\n");
     }
     else {
-        string_writeconfig("/boot/flags/ALLOW_DOWNGRADE", "false");
+        string_writeconfig("/boot/flags/ALLOW_DOWNGRADE", "false\n");
     }
 }
 
 void diagsWindow::on_checkBox_5_toggled(bool checked)
 {
     if(checked == true) {
-        string_writeconfig("/boot/flags/X11_START", "true");
+        string_writeconfig("/boot/flags/X11_START", "true\n");
     }
     else {
-        string_writeconfig("/boot/flags/X11_START", "false");
+        string_writeconfig("/boot/flags/X11_START", "false\n");
     }
 }
 
@@ -190,10 +199,10 @@ QString diagsWindow::readFile(QString file) {
 void diagsWindow::on_displayDebugCheckBox_toggled(bool checked)
 {
     if(checked == true) {
-        string_writeconfig("/boot/flags/DISPLAY_DEBUG", "true");
+        string_writeconfig("/boot/flags/DISPLAY_DEBUG", "true\n");
     }
     else {
-        string_writeconfig("/boot/flags/DISPLAY_DEBUG", "false");
+        string_writeconfig("/boot/flags/DISPLAY_DEBUG", "false\n");
     }
 }
 
@@ -201,9 +210,19 @@ void diagsWindow::on_displayDebugCheckBox_toggled(bool checked)
 void diagsWindow::on_guiDebugCheckBox_toggled(bool checked)
 {
     if(checked == true) {
-        string_writeconfig("/boot/flags/GUI_DEBUG", "true");
+        string_writeconfig("/boot/flags/GUI_DEBUG", "true\n");
     }
     else {
-        string_writeconfig("/boot/flags/GUI_DEBUG", "false");
+        string_writeconfig("/boot/flags/GUI_DEBUG", "false\n");
+    }
+}
+
+void diagsWindow::on_ipdDebugCheckBox_toggled(bool checked)
+{
+    if(checked == true) {
+        string_writeconfig("/boot/flags/IPD_DEBUG", "true\n");
+    }
+    else {
+        string_writeconfig("/boot/flags/IPD_DEBUG", "false\n");
     }
 }
