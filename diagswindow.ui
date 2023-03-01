@@ -522,7 +522,7 @@
          </font>
         </property>
         <property name="text">
-         <string>InkBox Diagnostics and Recovery</string>
+         <string>InkBox OS Diagnostics and Recovery</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>

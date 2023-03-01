@@ -3,6 +3,7 @@
 
 #include <QMessageBox>
 #include <QProcess>
+#include <QDebug>
 
 diagsWindow::diagsWindow(QWidget *parent)
     : QMainWindow(parent)
